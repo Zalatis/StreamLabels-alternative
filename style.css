@@ -68,6 +68,10 @@ li:nth-child(1){
     25%,50%,75% { opacity: 1 }
 }
 
+span {
+    white-space: pre;
+}
+
 .colorized {
     color: var(--color-text);
 }
