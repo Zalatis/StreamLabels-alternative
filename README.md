@@ -12,6 +12,6 @@ Uses Streamlabs API and Socket to avoid Streamers to launch Stream Labels every 
 
 `<span class="colorized">{months} mois<span class="name"> {name}</span>`
 
-`<span class="colorized">{amount}</span> <span class="name">: {name}</span>`
+`<span class="colorized">{amount}</span><span class="name">: {name}</span>`
 
 - Add `index.html` as browser source on OBS
