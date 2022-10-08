@@ -27,10 +27,6 @@ const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {tr
 
 //Perform Action on event
 streamlabs.on('event', (eventData) => {
-if (!eventData.for && eventData.type === 'donation') {
-    //code to handle donation events
-    console.log(eventData.message);
-}
 if (eventData.type == 'streamlabels') {
     var json = eventData.message["data"];
     console.log(json);
