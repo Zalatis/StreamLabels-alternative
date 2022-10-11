@@ -36,7 +36,6 @@ if (eventData.type == 'streamlabels') {
         text = this[labelName];
         if (this[labelName] != "") {
             // Element doesn't have this class
-            // if (document.querySelector("li").classList.contains(labelName) == true) {
             if (document.querySelector("." + labelName) != null) {
                 // Element doesn't have same text
                 if (document.querySelector("." + labelName).innerHTML.includes(text) == false) {
