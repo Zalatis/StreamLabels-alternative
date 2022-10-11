@@ -24,12 +24,10 @@ const TIMING = 5000;
 //Connect to socket
 const streamlabs = io(`https://sockets.streamlabs.com?token=${socketToken}`, {transports: ['websocket']});
 
-
 //Perform Action on event
 streamlabs.on('event', (eventData) => {
 if (eventData.type == 'streamlabels') {
     var json = eventData.message["data"];
-    console.log(json);
     // Check if there is already an element with class
     var labelNum = 0;
     for (var i = 0; i < labelsList.length; i++) {
@@ -38,17 +36,18 @@ if (eventData.type == 'streamlabels') {
         text = this[labelName];
         if (this[labelName] != "") {
             // Element doesn't have this class
-            if (document.querySelector("li").classList.contains(labelName) == false) {
-                // We create the label
-                createLabel(text, labelNum, labelName);
-            } 
-            // Element already has this class
-            if (document.querySelector("li").classList.contains(labelName) == true) {
+            // if (document.querySelector("li").classList.contains(labelName) == true) {
+            if (document.querySelector("." + labelName) != null) {
                 // Element doesn't have same text
                 if (document.querySelector("." + labelName).innerHTML.includes(text) == false) {
                     document.querySelector("." + labelName).innerHTML = `<img src="${imagesSRC[labelNum]}">${text}`;
                 }
             }
+            else {
+                // We create the label
+                createLabel(text, labelNum, labelName);
+            } 
+            // Element already has this class
         }
         labelNum++;
     }
