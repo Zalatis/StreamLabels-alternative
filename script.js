@@ -60,7 +60,8 @@ if (eventData.type == 'streamlabels') {
                 createLabel(text, labelNum, labelName);
             } 
             // Element already has this class
-        } else {
+        } 
+        else {
             console.log("Empty label");
         }
         labelNum++;
