@@ -6,16 +6,16 @@ const token = "MY_API_TOKEN";
 
 const labelsList = [
     'most_recent_follower',
-    'most_recent_subscriber',
+    'most_recent_cheerer',
     // 'most_recent_donator',
-    'most_recent_cheerer'
+    'most_recent_subscriber'
 ]
 
 const imagesSRC = [
     'images/follow.png',
-    'images/sub.png',
+    'images/bits.png',
     // 'images/donator.png',
-    'images/bits.png'
+    'images/sub.png'
 ]
 
 // Time in ms for timeOut
