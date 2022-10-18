@@ -62,8 +62,7 @@ if (eventData.type == 'streamlabels') {
     }
 }
 else {
-    console.log("Pas de type streamlabels");
-    console.log(eventData);
+    console.log("Event without streamlabels type");
 }
 });
 
