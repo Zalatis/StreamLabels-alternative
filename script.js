@@ -107,7 +107,7 @@ function addImages(labelNum, labelName){
 }
 
 function loop() {
-    document.querySelector("li:nth-child(1)").before(document.querySelector("ul").lastElementChild)
+    document.querySelector("ul").append(document.querySelector("ul").firstElementChild)
     setTimeout(loop, TIMING);
 }
 
