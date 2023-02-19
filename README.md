@@ -14,6 +14,6 @@ You can download Stream Labels from [here](https://streamlabs.com/dashboard#/str
 
 `<span class="colorized">{months} mois</span><span class="name"> {name}</span>`
 
-`<span class="colorized">{amount}</span><span class="name">: {name}</span>`
+`<span class="colorized">{amount}</span><span class="name"> {name}</span>`
 
 - Add `index.html` as browser source on OBS
