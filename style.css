@@ -1,5 +1,6 @@
 :root {
     --color-text: #FFA089;
+    --color-name: #FFFFFF;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:700);
@@ -74,4 +75,8 @@ span {
 
 .colorized {
     color: var(--color-text);
+}
+
+.name {
+    color: var(--color-name);
 }
