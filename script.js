@@ -33,6 +33,11 @@ streamlabs.on("disconnect", () => {
     console.log("Disconnected from socket");
 });
 
+streamlabs.on("reconnect", () => {
+    console.log("Reconnected to socket");
+    refreshReconnect(0)
+});
+
 streamlabs.on('event', (eventData) => {
 if (eventData.type == 'streamlabels') {
     var json = eventData.message["data"];
@@ -63,6 +68,8 @@ if (eventData.type == 'streamlabels') {
 }
 else {
     console.log("Event without streamlabels type");
+    // console.log(eventData.type)
+    // console.log(eventData.message["data"])
 }
 });
 
@@ -90,6 +97,29 @@ function init(labelNum) {
         });
 }
 
+function refreshReconnect(labelNum) {
+    fetch(`https://streamlabs.com/api/v5/stream-labels/files?token=${token}`)
+        .then(response=>response.json())
+        .then(data=> {
+            json = data['data'];
+            for (var i = 0; i < labelsList.length; i++) {
+                var labelName = labelsList[labelNum];
+                this[labelName] = json[`${labelName}`];
+                if (this[labelName] != "") {
+                    text = this[labelName];
+                    editLabel(text, labelName);
+                }
+                labelNum++;
+            }
+            labelNum = 0;
+            setTimeout(loop, TIMING);
+        })
+        .catch(function () {
+            console.log("Impossible to scrape data")
+            // Restart
+            setTimeout(refreshReconnect,TIMING,labelNum)
+        });
+}
 
 function createLabel(text, labelNum, labelName){
     let liItem = document.createElement("li");
@@ -104,6 +134,11 @@ function addImages(labelNum, labelName){
     let imgItem = document.createElement('img');
     imgItem.src = `${imagesSRC[labelNum]}`;
     digits.prepend(imgItem); 
+}
+
+function editLabel(text, labelName) {
+    let liItem = document.querySelector('.' + labelName);
+    liItem.innerHTML = `${text}`;
 }
 
 function loop() {
