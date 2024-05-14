@@ -80,3 +80,7 @@ span {
 .name {
     color: var(--color-name);
 }
+
+.textContainer {
+    display: contents;
+}
