@@ -90,8 +90,8 @@ function init(labelNum) {
             labelNum = 0;
             setTimeout(loop, TIMING);
         })
-        .catch(function () {
-            console.log("Impossible to scrape data")
+        .catch(function (error) {
+            console.log("Error fetching data:", error);
             // Restart
             setTimeout(init,TIMING,labelNum)
         });
@@ -107,25 +107,30 @@ function refreshReconnect(labelNum) {
                 this[labelName] = json[`${labelName}`];
                 if (this[labelName] != "") {
                     text = this[labelName];
-                    editLabel(text, labelName);
+                    editLabel(text, labelNum, labelName);
                 }
                 labelNum++;
             }
             labelNum = 0;
-            setTimeout(loop, TIMING);
         })
-        .catch(function () {
-            console.log("Impossible to scrape data")
+        .catch(function (error) {
+            console.log("Error fetching data:", error);
             // Restart
-            setTimeout(refreshReconnect,TIMING,labelNum)
+            setTimeout(refreshReconnect, TIMING, labelNum);
         });
 }
 
 function createLabel(text, labelNum, labelName){
+    // Create li element with labelName as class
     let liItem = document.createElement("li");
     liItem.classList.add(labelName);
-    liItem.innerHTML = `${text}`;
+    // Create div container for text from StreamLabels
+    let textContainer = document.createElement("div");
+    textContainer.classList.add("textContainer")
+    textContainer.innerHTML = `${text}`;
+    liItem.appendChild(textContainer);
     document.querySelector('ul').append(liItem);
+    // Create Images
     addImages(labelNum, labelName);
 }
 
@@ -137,8 +142,8 @@ function addImages(labelNum, labelName){
 }
 
 function editLabel(text, labelName) {
-    let liItem = document.querySelector('.' + labelName);
-    liItem.innerHTML = `${text}`;
+    let textContainer = document.querySelector("." + labelName + " .textContainer")
+    textContainer.innerHTML = `${text}`;
 }
 
 function loop() {
