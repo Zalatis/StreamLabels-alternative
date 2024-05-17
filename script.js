@@ -52,10 +52,11 @@ if (eventData.type == 'streamlabels') {
             // If Element have this class, modify the child element
             if (document.querySelector("." + labelName) != null) {
                 console.log("Class already exist");
+                editLabel(text, labelName);
                 // Child element does not have same text
-                if (document.querySelector("." + labelName).innerHTML.includes(text) == false) {
-                    document.querySelector("." + labelName).innerHTML = `<img src="${imagesSRC[labelNum]}">${text}`;
-                }
+                // if (document.querySelector("." + labelName).innerHTML.includes(text) == false) {
+                //     document.querySelector("." + labelName).innerHTML = `<img src="${imagesSRC[labelNum]}">${text}`;
+                // }
             }
             else {
                 // We create the label
@@ -107,7 +108,7 @@ function refreshReconnect(labelNum) {
                 this[labelName] = json[`${labelName}`];
                 if (this[labelName] != "") {
                     text = this[labelName];
-                    editLabel(text, labelNum, labelName);
+                    editLabel(text, labelName);
                 }
                 labelNum++;
             }
@@ -143,7 +144,9 @@ function addImages(labelNum, labelName){
 
 function editLabel(text, labelName) {
     let textContainer = document.querySelector("." + labelName + " .textContainer")
-    textContainer.innerHTML = `${text}`;
+    if (textContainer.innerHTML != `${text}`) {
+        textContainer.innerHTML = `${text}`;
+    }
 }
 
 function loop() {
