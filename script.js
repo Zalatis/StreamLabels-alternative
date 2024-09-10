@@ -1,8 +1,8 @@
-// https://streamlabs.com/dashboard#/settings/api-settings API Settings -> API Tokens -> Your Socket API Token
-const socketToken = 'MY_SOCKET_API_TOKEN';
-
 // https://streamlabs.com/dashboard#/settings/api-settings API Settings -> API Tokens -> Your API Access Token
 const token = "MY_API_TOKEN";
+
+// https://streamlabs.com/dashboard#/settings/api-settings API Settings -> API Tokens -> Your Socket API Token
+const socketToken = 'MY_SOCKET_API_TOKEN';
 
 const labelsList = [
     'most_recent_follower',
