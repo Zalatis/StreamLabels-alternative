@@ -5,7 +5,7 @@ Uses Streamlabs API and Socket to avoid Streamers to launch Stream Labels every 
 ![](https://github.com/Zalatis/StreamLabels-without-StreamLabels/raw/main/Preview/preview.gif?raw=true)
 
 # Installation
-- Modify `line 2 and 5` with your Tokens from https://streamlabs.com/dashboard#/settings/api-setting
+- Modify `line 2 and 5` with your Tokens from https://streamlabs.com/dashboard#/settings/api-settings
 - To get colorized text it considered that your most recent follower, subscriber, cheerer looks like this on Stream Labels 
 
 You can download Stream Labels from [here](https://streamlabs.com/dashboard#/streamlabels)
